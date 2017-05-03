@@ -1,15 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser'
+import { ModuleWithProviders, NgModule } from '@angular/core'
 import { HttpModule } from '@angular/http'
-import { FormsModule } from '@angular/forms'
-import { NgModule } from '@angular/core'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router'
+
 import { AuthModule } from '../auth/auth.module'
 
 import { TruncatePipe } from 'angular2-truncate'
 
 import { TabsModule } from 'ngx-bootstrap/tabs'
-
-import { routes } from './app.routing'
 
 import { AppComponent } from './app.component'
 import { HeaderComponent } from '../layout/header.component'
@@ -17,10 +16,17 @@ import { FooterComponent } from '../layout/footer.component'
 import { HomeComponent } from '../home/home.component'
 
 import { ArticleListComponent } from '../articles/article-list.component'
+import { ArticleFormNewComponent } from '../articles/article-form-new.component'
+import { ArticleFormEditComponent } from '../articles/article-form-edit.component'
 
 import { ShowAuthedDirective } from '../shared/directives'
 import { ApiService, JwtService, UserService, ArticlesService } from '../shared/services'
 
+const appRouting: ModuleWithProviders = RouterModule.forRoot([
+  { path: '', component: HomeComponent },
+  { path: 'articles/new', component: ArticleFormNewComponent },
+  { path: 'articles/:id/edit', component: ArticleFormEditComponent }
+])
 
 @NgModule({
   declarations: [
@@ -29,6 +35,8 @@ import { ApiService, JwtService, UserService, ArticlesService } from '../shared/
     FooterComponent,
     HomeComponent,
     ArticleListComponent,
+    ArticleFormNewComponent,
+    ArticleFormEditComponent,
     ShowAuthedDirective,
     TruncatePipe
   ],
@@ -36,7 +44,8 @@ import { ApiService, JwtService, UserService, ArticlesService } from '../shared/
     BrowserModule,
     HttpModule,
     FormsModule,
-    RouterModule.forRoot(routes),
+    ReactiveFormsModule,
+    appRouting,
     TabsModule.forRoot(),
     AuthModule
   ],

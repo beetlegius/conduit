@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 const TEMPLATE = require('./home.component.html')
 
+import { ArticleListComponent } from '../articles/article-list.component'
+
 import { User } from '../shared/models'
 import { UserService } from '../shared/services'
 
