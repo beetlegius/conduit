@@ -1,0 +1,17 @@
+<p class="lead text-muted" *ngIf="loading">
+  <i class="fa fa-cog fa-spin fa-fw"></i> Loading...
+</p>
+
+<div class="alert alert-info" *ngIf="articles?.length == 0">
+  <i class="fa fa-th fa-fw"></i> No articles yet...
+</div>
+
+<ul class="list-unstyled article-list">
+  <li *ngFor="let article of articles" class="media my-4">
+    <img class="d-flex mr-3" [src]="article.user.image_url" [alt]="article.user.name" *ngIf="article.user.image_url">
+    <div class="media-body">
+      <h5 class="mt-0">{{article.title}}</h5>
+      {{article.content}}
+    </div>
+  </li>
+</ul>

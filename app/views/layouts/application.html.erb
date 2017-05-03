@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Conduit</title>
+    <%= csrf_meta_tags %>
+
+    <base href="/">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <!-- Enable bootstrap 4 theme -->
+    <script>window.__theme = 'bs4';</script>
+
+    <%= yield %>
+  </body>
+</html>

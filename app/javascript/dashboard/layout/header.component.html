@@ -1,0 +1,37 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded mb-3">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" routerLink="/"><i class="fa fa-lg fa-cubes" aria-hidden="true"></i> Conduit</a>
+
+  <div class="collapse navbar-collapse" id="navigation">
+
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i> Home</a>
+      </li>
+      <li class="nav-item" *showAuthed="true">
+        <a class="nav-link" routerLinkActive="active" routerLink="/articles/new"><i class="fa fa-edit fa-fw" aria-hidden="true"></i> New article</a>
+      </li>
+      <li class="nav-item" *showAuthed="true">
+        <a class="nav-link" routerLinkActive="active" routerLink="/settings"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" *showAuthed="false">
+        <a class="nav-link" routerLinkActive="active" routerLink="/login"><i class="fa fa-sign-in fa-fw" aria-hidden="true"></i> Login</a>
+      </li>
+      <li class="nav-item" *showAuthed="false">
+        <a class="nav-link" routerLinkActive="active" routerLink="/register"><i class="fa fa-user-circle fa-fw" aria-hidden="true"></i> Register</a>
+      </li>
+      <li class="nav-item" *showAuthed="true">
+        <a class="nav-link" routerLinkActive="active" routerLink="/users/{{currentUser.slug}}"><i class="fa fa-user fa-fw" aria-hidden="true"></i> {{currentUser.name}}</a>
+      </li>
+      <li class="nav-item" *showAuthed="true">
+        <a class="nav-link" (click)="logout()"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Logout</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>

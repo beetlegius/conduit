@@ -1,0 +1,54 @@
+module Api
+  class ArticlesController < BaseController
+    skip_before_action :authenticate_request, only: %w(index show)
+    load_and_authorize_resource
+
+    def index
+      if params[:page].present?
+        page_number = params[:page][:number]
+        page_size   = params[:page][:size]
+      else
+        page_number = 1
+        page_size   = nil
+      end
+
+      @articles = @articles.includes(:user, :favorite_users, :tags, comments: :user).page(page_number).per(page_size)
+      render json: @articles, status: :ok
+    end
+
+    def feed
+      @articles = @articles.where(user: current_user.following)
+      index
+    end
+
+    def show
+      render_article
+    end
+
+    def create
+      @article = current_user.articles.create! article_params
+      render_article :created
+    end
+
+    def update
+      @article.update! article_params
+      render_article
+    end
+
+    def destroy
+      @article.destroy
+      render_article
+    end
+
+    private
+
+    def article_params
+      params.require(:article).permit(:title, :content)
+    end
+
+    def render_article(status = :ok)
+      render json: @article, status: status, location: [:api, @article]
+    end
+
+  end
+end

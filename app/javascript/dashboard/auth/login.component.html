@@ -1,0 +1,11 @@
+<form [formGroup]="authForm" (ngSubmit)="submit()" autocomplete="off">
+  <fieldset [disabled]="isSubmitting">
+    <fieldset class="form-group">
+      <input autofocus formControlName="email" placeholder="Email" class="form-control form-control-lg" type="email" />
+    </fieldset>
+    <fieldset class="form-group">
+      <input formControlName="password" placeholder="Password" class="form-control form-control-lg" type="password" />
+    </fieldset>
+    <button class="btn btn-lg btn-primary" [disabled]="!authForm.valid" type="submit">Login</button>
+  </fieldset>
+</form>
