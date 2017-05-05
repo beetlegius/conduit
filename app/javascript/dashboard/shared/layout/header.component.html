@@ -1,10 +1,10 @@
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded mb-3">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
     <span class="navbar-toggler-icon"></span>
   </button>
   <a class="navbar-brand" routerLink="/"><i class="fa fa-lg fa-cubes" aria-hidden="true"></i> Conduit</a>
 
-  <div class="collapse navbar-collapse" id="navigation">
+  <div class="collapse navbar-collapse" id="navigation" [collapse]="isCollapsed">
 
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">

@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-words = Lipsum.words[30].to_s.split(" ")
+words = Lipsum.words[100].to_s.split(" ")
 paragraph = Lipsum.paragraphs[1].to_s
 
 
@@ -51,7 +51,7 @@ emanuel.follow sandra
 
 
 20.times do
-  Tag.create! name: words.sample(2).join(" ").humanize
+  Tag.create! name: words.sample(3).join(" ").humanize
 end
 
 
@@ -60,8 +60,8 @@ end
 users = User.all
 tags = Tag.all
 
-50.times do
-  article = users.sample.articles.create! title: words.sample(2).join(" ").humanize, content: paragraph
+1000.times do
+  article = users.sample.articles.create! title: words.sample(6).join(" ").humanize, content: paragraph
   puts article.title
   article.tags << tags.sample(rand(tags.size / 2))
 end
@@ -70,9 +70,9 @@ articles = Article.all
 
 users.each do |user|
   user.following.includes(:articles).each do |followed|
-    followed.articles.sample(4).each do |article|
+    followed.articles.sample(80).each do |article|
       article.comments.create! body: paragraph, user: user
     end
   end
-  user.favorite_articles << articles.sample(rand(articles.size / 4))
+  user.favorite_articles << articles.sample(rand(articles.size / 20))
 end

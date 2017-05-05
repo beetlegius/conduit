@@ -1,15 +1,15 @@
 <div class="jumbotron">
   <div class="container">
-    <h1 class="display-3"><i class="fa fa-sign-in fa-fw"></i> Login</h1>
+    <h1 class="display-4"><i class="fa fa-sign-in fa-fw"></i> Login</h1>
     <hr />
     <p class="lead">Enter your user and password please.</p>
     <form [formGroup]="authForm" (ngSubmit)="submit()" autocomplete="off">
       <fieldset [disabled]="isSubmitting">
         <fieldset class="form-group">
-          <input autofocus formControlName="email" placeholder="Email" class="form-control" type="email" />
+          <input [autofocus] formControlName="email" placeholder="Email" class="form-control" type="email" />
         </fieldset>
         <fieldset class="form-group">
-          <input formControlName="password" placeholder="Password" class="form-control" type="password" />
+          <input formControlName="password" placeholder="Password" class="form-control" type="password" autocomplete="new-password" />
         </fieldset>
         <button class="btn btn-success" [disabled]="!authForm.valid" type="submit">Login</button>
         <p class="mt-3 mb-0 small">If you don't have an account, please <a routerLink="/register">register here</a>.</p>

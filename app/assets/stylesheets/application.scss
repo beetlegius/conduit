@@ -42,3 +42,9 @@ a, .btn, .nav-link { cursor: pointer; }
 .article-list li img {
   max-width: 150px;
 }
+
+.jumbotron { margin: -20px 0px; border-radius: 0px; }
+
+ul li.active a:not([href]):not([tabindex]) {
+  &:focus, &:hover { color: #fff; }
+}

@@ -5,15 +5,15 @@ module Api
 
     def index
       if params[:page].present?
-        page_number = params[:page][:number]
-        page_size   = params[:page][:size]
+        page_number = params[:page][:number].to_i if params[:page][:number]
+        page_size   = params[:page][:size].to_i if params[:page][:size]
       else
         page_number = 1
         page_size   = nil
       end
 
       @articles = @articles.includes(:user, :favorite_users, :tags, comments: :user).page(page_number).per(page_size)
-      render json: @articles, status: :ok
+      render json: @articles, meta: pagination_dict(@articles), meta_key: :pagination, status: :ok
     end
 
     def feed

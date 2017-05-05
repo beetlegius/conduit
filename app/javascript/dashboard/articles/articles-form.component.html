@@ -1,7 +1,7 @@
 <form [formGroup]="articleForm" (ngSubmit)="save()" autocomplete="off">
   <fieldset [disabled]="isSubmitting">
     <fieldset class="form-group">
-      <input autofocus formControlName="title" placeholder="Title" class="form-control" type="text" />
+      <input [autofocus] formControlName="title" placeholder="Title" class="form-control" type="text" />
     </fieldset>
     <fieldset class="form-group">
       <textarea formControlName="content" placeholder="Content" class="form-control"></textarea>

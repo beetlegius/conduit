@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Http, Response } from '@angular/http'
+import { Http, Response, URLSearchParams } from '@angular/http'
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/map'
 
@@ -15,12 +15,21 @@ export class ArticlesService {
     private api: ApiService
   ) { }
 
-  all() : Observable<Article[]> {
-    return this.api.get(this.base_url)
+  all(page: number = null, size: number = null) : Observable<{articles: Article[], articlesCount: number}> {
+    return this.query(this.base_url, page, size)
   }
 
-  feed() : Observable<Article[]> {
-    return this.api.get(this.base_url + 'feed')
+  feed(page: number = null, size: number = null) : Observable<{articles: Article[], articlesCount: number}> {
+    return this.query(this.base_url + 'feed', page, size)
+  }
+
+  query(url: string, page: number = 1, size: number = 50) : Observable<{articles: Article[], articlesCount: number}> {
+    let params: URLSearchParams = new URLSearchParams()
+
+    params.set("page[number]", page.toString())
+    params.set("page[size]", size.toString())
+
+    return this.api.get(url, params)
   }
 
   find(id: number) : Observable<Article> {

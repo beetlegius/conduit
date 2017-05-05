@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
-const TEMPLATE = require('./home.component.html')
+const TEMPLATE = require('./articles-index.component.html')
 
-import { ArticleListComponent } from '../articles/article-list.component'
+import { ArticlesListComponent } from './articles-list.component'
 
 import { User } from '../shared/models'
 import { UserService } from '../shared/services'
@@ -10,7 +10,7 @@ import { UserService } from '../shared/services'
   selector: 'home',
   template: TEMPLATE
 })
-export class HomeComponent implements OnInit {
+export class ArticlesIndexComponent implements OnInit {
 
   user: User
 

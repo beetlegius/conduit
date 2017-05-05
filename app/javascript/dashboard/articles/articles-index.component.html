@@ -15,11 +15,11 @@
       <tabset type="pills">
         <tab heading="Global">
           <hr>
-          <article-list [feed]="false"></article-list>
+          <articles-list [feed]="false"></articles-list>
         </tab>
         <tab [disabled]="!user?.id" heading="Feed">
           <hr>
-          <article-list [feed]="true"></article-list>
+          <articles-list [feed]="true"></articles-list>
         </tab>
       </tabset>
     </div>

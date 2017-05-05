@@ -1,14 +1,14 @@
 import { Component } from '@angular/core'
-const TEMPLATE = require('./article-form.component.html')
+const TEMPLATE = require('./articles-form.component.html')
 
-import { ArticleFormComponent } from './article-form.component'
+import { ArticlesFormComponent } from './articles-form.component'
 
 @Component({
-  selector: 'article-form-edit',
+  selector: 'articles-edit',
   template: TEMPLATE
 })
 
-export class ArticleFormEditComponent extends ArticleFormComponent {
+export class ArticlesEditComponent extends ArticlesFormComponent {
 
   ngOnInit(){
     super.ngOnInit()

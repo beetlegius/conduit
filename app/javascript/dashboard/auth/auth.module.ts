@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { LoginComponent } from './login.component'
 import { RegisterComponent } from './register.component'
 
-import { UserService } from '../shared/services'
+import { SharedModule } from '../shared'
 
 const authRouting: ModuleWithProviders = RouterModule.forChild([
   { path: 'login', component: LoginComponent },
@@ -13,17 +13,16 @@ const authRouting: ModuleWithProviders = RouterModule.forChild([
 ])
 
 @NgModule({
+  imports: [
+    RouterModule,
+    SharedModule,
+    ReactiveFormsModule,
+    authRouting
+  ],
   declarations: [
     LoginComponent,
     RegisterComponent
   ],
-  imports: [
-    RouterModule,
-    authRouting,
-    ReactiveFormsModule
-  ],
-  providers: [
-    UserService
-  ]
+  providers: []
 })
 export class AuthModule {}

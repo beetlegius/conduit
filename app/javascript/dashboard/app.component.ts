@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 const TEMPLATE = require('./app.component.html')
 
-import { UserService } from '../shared/services'
+import { UserService } from './shared'
 
 @Component({
   selector: 'dashboard',

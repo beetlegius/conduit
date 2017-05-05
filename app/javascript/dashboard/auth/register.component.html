@@ -1,16 +1,16 @@
 <div class="jumbotron">
   <div class="container">
     <div class="row">
-      <div class="col-6">
-        <h1 class="display-3"><i class="fa fa-user-circle-o fa-fw"></i> Please ¡do it!</h1>
+      <div class="col-md-6 col-sm-12">
+        <h1 class="display-4"><i class="fa fa-user-circle-o fa-fw"></i> Register</h1>
         <hr />
         <p class="lead">If you register now you will get a 20% discount on your first purchase and two free tickets to see the super bowl!</p>
       </div>
-      <div class="col-6">
+      <div class="col-md-6 col-sm-12">
         <form [formGroup]="authForm" (ngSubmit)="submit()" autocomplete="off">
           <fieldset [disabled]="isSubmitting">
             <fieldset class="form-group">
-              <input autofocus formControlName="email" placeholder="Email" class="form-control" type="email" />
+              <input [autofocus] formControlName="email" placeholder="Email" class="form-control" type="email" />
             </fieldset>
             <fieldset class="form-group">
               <input formControlName="name" placeholder="Name" class="form-control" type="text" />
@@ -19,7 +19,7 @@
               <input formControlName="image_url" placeholder="Image url" class="form-control" type="url" />
             </fieldset>
             <fieldset class="form-group">
-              <input formControlName="password" placeholder="Password" class="form-control" type="password" />
+              <input formControlName="password" placeholder="Password" class="form-control" type="password" autocomplete="new-password" />
             </fieldset>
             <button class="btn btn-success" [disabled]="!authForm.valid" type="submit">Register now!</button>
             <p class="mt-3 mb-0 small">If you have an account, please <a routerLink="/login">log in here</a>.</p>
