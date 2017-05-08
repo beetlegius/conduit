@@ -1,6 +1,6 @@
 import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core'
 
-import { UserService } from '../services'
+import { UsersService } from '../services'
 
 @Directive({
   selector: '[showAuthed]'
@@ -8,14 +8,14 @@ import { UserService } from '../services'
 export class ShowAuthedDirective implements OnInit {
   constructor(
     private templateRef: TemplateRef<any>,
-    private userService: UserService,
+    private usersService: UsersService,
     private viewContainer: ViewContainerRef
   ) {}
 
   condition: boolean
 
   ngOnInit() {
-    this.userService.isAuthenticated.subscribe(
+    this.usersService.isAuthenticated.subscribe(
       (isAuthenticated) => {
         if (isAuthenticated && this.condition || !isAuthenticated && !this.condition) {
           this.viewContainer.createEmbeddedView(this.templateRef)

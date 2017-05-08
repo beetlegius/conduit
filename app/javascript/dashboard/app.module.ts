@@ -10,6 +10,7 @@ import { AppComponent } from './app.component'
 
 import { AuthModule } from './auth/auth.module'
 import { ArticlesModule } from './articles/articles.module'
+import { ProfilesModule } from './profiles/profiles.module'
 
 import {
   SharedModule,
@@ -27,6 +28,7 @@ const appRouting: ModuleWithProviders = RouterModule.forRoot([])
     appRouting,
     AuthModule,
     ArticlesModule,
+    ProfilesModule,
     SharedModule,
     CollapseModule.forRoot()
   ],

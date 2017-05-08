@@ -1,7 +1,8 @@
 module Api
   class ArticlesController < BaseController
     skip_before_action :authenticate_request, only: %w(index show)
-    load_and_authorize_resource
+    load_resource :user, only: %w(index)
+    load_and_authorize_resource through: :user, shallow: true
 
     def index
       if params[:page].present?

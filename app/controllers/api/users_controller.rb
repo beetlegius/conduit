@@ -3,8 +3,13 @@ module Api
     skip_before_action :authenticate_request, only: %w(create)
     authorize_resource except: :create
 
-    def show
+    def current
       @user = current_user
+      render_user
+    end
+
+    def show
+      @user = User.find params[:id]
       render_user
     end
 

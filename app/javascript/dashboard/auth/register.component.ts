@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 const TEMPLATE = require('./register.component.html')
 
-import { UserService } from '../shared/services'
+import { UsersService } from '../shared/services'
 
 @Component({
   selector: 'register',
@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   isSubmitting: boolean
 
   constructor(
-    private userService: UserService,
+    private usersService: UsersService,
     private router: Router,
     private fb: FormBuilder
   ) {
@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
     this.isSubmitting = true
 
     let attributes = this.authForm.value
-    this.userService.create(attributes).subscribe(
+    this.usersService.create(attributes).subscribe(
       data => this.router.navigate(['/']),
       err => this.isSubmitting = false
     )

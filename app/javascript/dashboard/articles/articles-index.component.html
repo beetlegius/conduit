@@ -6,7 +6,7 @@
         <div class="card-block">
           <h4 class="card-title">{{user.name}}</h4>
           <p class="card-text text-justify">{{user.bio | truncate: 130}}</p>
-          <a routerLink="/profile" class="card-link small text-right">+ See more</a>
+          <a routerLink="/profiles/{{user.slug}}" class="card-link small text-right">+ See more</a>
         </div>
       </div>
     </div>

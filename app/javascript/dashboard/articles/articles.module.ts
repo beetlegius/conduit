@@ -11,7 +11,7 @@ import { ArticlesNewComponent }   from './articles-new.component'
 import { ArticlesEditComponent }  from './articles-edit.component'
 import { ArticlesListComponent }  from './articles-list.component'
 
-// import { UserService } from '../shared/services'
+// import { UsersService } from '../shared/services'
 
 import { SharedModule } from '../shared'
 
@@ -38,7 +38,10 @@ const articlesRouting: ModuleWithProviders = RouterModule.forChild([
     TruncatePipe
   ],
   providers: [
-    // UserService
+    // UsersService
+  ],
+  exports: [
+    ArticlesListComponent
   ]
 })
 export class ArticlesModule {}

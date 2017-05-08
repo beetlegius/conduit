@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 const TEMPLATE = require('./app.component.html')
 
-import { UserService } from './shared'
+import { UsersService } from './shared'
 
 @Component({
   selector: 'dashboard',
@@ -10,11 +10,11 @@ import { UserService } from './shared'
 export class AppComponent implements OnInit {
 
   constructor (
-    private userService: UserService
+    private usersService: UsersService
   ) {}
 
   ngOnInit() {
-    this.userService.init()
+    this.usersService.init()
   }
 
 }

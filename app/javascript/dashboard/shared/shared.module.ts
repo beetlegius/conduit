@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 
 import {
-  ApiService, ArticlesService, JwtService, UserService,
+  ApiService, ArticlesService, JwtService, UsersService,
   AutofocusDirective, ShowAuthedDirective
 } from '.'
 
@@ -20,7 +20,7 @@ import {
     ApiService,
     ArticlesService,
     JwtService,
-    UserService
+    UsersService
   ],
   exports: [
     AutofocusDirective,

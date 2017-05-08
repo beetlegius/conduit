@@ -19,8 +19,14 @@
     <li *ngFor="let article of articles" class="media my-4">
       <img class="d-flex mr-3" [src]="article.user.image_url" [alt]="article.user.name" *ngIf="article.user && article.user.image_url">
       <div class="media-body">
-        <h5 class="mt-0">{{article.title}}</h5>
-        {{article.content}}
+        <span class="small text-muted pull-right">{{article.created_at | date}}</span>
+        <h5 class="mt-0">
+          <a routerLink="/profiles/{{article.user.slug}}">{{article.user.name}}</a> <small>{{article.title}}</small>
+        </h5>
+        <p class="text-justify">
+          {{article.content | truncate: 450}}
+          <a class="btn btn-link btn-sm" routerLink="/articles/{{article.slug}}"><i class="fa fa-arrow-right fa-fw"></i> See more</a>
+        </p>
       </div>
     </li>
   </ul>

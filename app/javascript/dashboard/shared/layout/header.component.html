@@ -26,7 +26,7 @@
         <a class="nav-link" routerLinkActive="active" routerLink="/register"><i class="fa fa-user-circle fa-fw" aria-hidden="true"></i> Register</a>
       </li>
       <li class="nav-item" *showAuthed="true">
-        <a class="nav-link" routerLinkActive="active" routerLink="/users/{{currentUser.slug}}"><i class="fa fa-user fa-fw" aria-hidden="true"></i> {{currentUser.name}}</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/profiles/{{currentUser.slug}}"><i class="fa fa-user fa-fw" aria-hidden="true"></i> {{currentUser.name}}</a>
       </li>
       <li class="nav-item" *showAuthed="true">
         <a class="nav-link" (click)="logout()"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Logout</a>

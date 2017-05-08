@@ -3,7 +3,7 @@ const TEMPLATE = require('./articles-list.component.html')
 import { Observable } from 'rxjs/Observable'
 
 import { ArticlesService } from '../shared/services'
-import { Article } from '../shared/models'
+import { Article, User } from '../shared/models'
 
 @Component({
   selector: 'articles-list',
@@ -11,6 +11,7 @@ import { Article } from '../shared/models'
 })
 export class ArticlesListComponent implements OnInit {
   @Input() feed: boolean = false
+  @Input() user: Observable<User>
   articles: Article[]
 
   loading: boolean = false
@@ -35,7 +36,6 @@ export class ArticlesListComponent implements OnInit {
 
   get() {
     this.loading = true
-    // this.articles = []
 
     const getArticles = (data) => {
       this.articles   = data.articles
@@ -47,6 +47,13 @@ export class ArticlesListComponent implements OnInit {
 
     if (this.feed)
       this.service.feed(this.currentPage, this.pageSize).subscribe(getArticles)
+    else if (this.user)
+      this.user.subscribe(
+        (u) => {
+          alert(u)
+          this.service.user(u.slug, this.currentPage, this.pageSize).subscribe(getArticles)
+        }
+      )
     else
       this.service.all(this.currentPage, this.pageSize).subscribe(getArticles)
 

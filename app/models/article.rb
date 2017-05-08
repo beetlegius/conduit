@@ -1,4 +1,8 @@
 class Article < ApplicationRecord
+
+  extend FriendlyId
+  friendly_id :title
+
   belongs_to :user
   has_many :comments
   has_many :favorites

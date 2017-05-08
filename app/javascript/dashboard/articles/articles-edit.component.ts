@@ -12,11 +12,22 @@ export class ArticlesEditComponent extends ArticlesFormComponent {
 
   ngOnInit(){
     super.ngOnInit()
-    console.log('editing')
+    this.title = 'Editing article'
+    this.description = "Please don't look back in anger."
+    this.buttonLabel = 'Update article'
+
+    this.route.params.subscribe(
+      (params) => this.service.find(params['id']).subscribe(
+        (data) => this.article = data.article,
+        (err) => this.router.navigate(['/'])
+      )
+    )
   }
 
   save(){
-    alert('save! desde el update la puta que lo parió')
+    this.service.update(this.article).subscribe(
+      (data) => this.router.navigate(['/'])
+    )
   }
 
 }

@@ -15,37 +15,41 @@ export class ArticlesService {
     private api: ApiService
   ) { }
 
-  all(page: number = null, size: number = null) : Observable<{articles: Article[], articlesCount: number}> {
+  public all(page: number = null, size: number = null) : Observable<{articles: Article[], articlesCount: number}> {
     return this.query(this.base_url, page, size)
   }
 
-  feed(page: number = null, size: number = null) : Observable<{articles: Article[], articlesCount: number}> {
+  public feed(page: number = null, size: number = null) : Observable<{articles: Article[], articlesCount: number}> {
     return this.query(this.base_url + 'feed', page, size)
   }
 
-  query(url: string, page: number = 1, size: number = 50) : Observable<{articles: Article[], articlesCount: number}> {
+  public user(slug: string, page: number = null, size: number = null) : Observable<{articles: Article[], articlesCount: number}> {
+    return this.query('/users/' + slug + this.base_url, page, size)
+  }
+
+  public find(id: number|string) : Observable<any> {
+    return this.api.get(this.base_url + id)
+  }
+
+  public create(article: Article) : Observable<Article> {
+    return this.api.post(this.base_url, {article: article })
+  }
+
+  public update(article: Article) : Observable<Article> {
+    return this.api.patch(this.base_url + article.slug, {article: article})
+  }
+
+  public destroy(id: number|string) : Observable<Article> {
+    return this.api.delete(this.base_url + id)
+  }
+
+  private query(url: string, page: number = 1, size: number = 50) : Observable<{articles: Article[], articlesCount: number}> {
     let params: URLSearchParams = new URLSearchParams()
 
     params.set("page[number]", page.toString())
     params.set("page[size]", size.toString())
 
     return this.api.get(url, params)
-  }
-
-  find(id: number) : Observable<Article> {
-    return this.http.get(this.base_url + id).map( (res: Response) => res.json() )
-  }
-
-  create(article: Article) : Observable<Article> {
-    return this.http.post(this.base_url, article).map( (res: Response) => res.json() )
-  }
-
-  update(id: number, article: Article) : Observable<Article> {
-    return this.http.patch(this.base_url + id, article).map( (res: Response) => res.json() )
-  }
-
-  destroy(id: number) : Observable<Article> {
-    return this.http.delete(this.base_url + id).map( (res: Response) => res.json() )
   }
 
 }

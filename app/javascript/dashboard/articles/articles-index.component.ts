@@ -4,7 +4,7 @@ const TEMPLATE = require('./articles-index.component.html')
 import { ArticlesListComponent } from './articles-list.component'
 
 import { User } from '../shared/models'
-import { UserService } from '../shared/services'
+import { UsersService } from '../shared/services'
 
 @Component({
   selector: 'home',
@@ -15,11 +15,11 @@ export class ArticlesIndexComponent implements OnInit {
   user: User
 
   constructor(
-    private userService: UserService
+    private usersService: UsersService
   ) {}
 
   ngOnInit() {
-    this.userService.currentUser.subscribe( (user) => this.user = user )
+    this.usersService.currentUser.subscribe( (user) => this.user = user )
   }
 
 }

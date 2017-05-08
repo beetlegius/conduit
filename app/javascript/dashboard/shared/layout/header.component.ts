@@ -3,7 +3,7 @@ import { Router } from '@angular/router'
 const TEMPLATE = require('./header.component.html')
 
 import { User } from '../models'
-import { UserService } from '../services'
+import { UsersService } from '../services'
 
 @Component({
   selector: 'layout-header',
@@ -14,16 +14,16 @@ export class HeaderComponent implements OnInit {
   public currentUser: User
 
   constructor(
-    private userService: UserService,
+    private usersService: UsersService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.userService.currentUser.subscribe( (user) => this.currentUser = user )
+    this.usersService.currentUser.subscribe( (user) => this.currentUser = user )
   }
 
   logout() {
-    this.userService.logout()
+    this.usersService.logout()
     this.router.navigate(['/login'])
   }
 }

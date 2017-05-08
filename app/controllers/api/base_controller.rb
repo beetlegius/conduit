@@ -2,6 +2,8 @@ module Api
   class BaseController < ActionController::API
     include CanCan::ControllerAdditions
 
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
     before_action :authenticate_request
     attr_reader :current_user
 
@@ -17,6 +19,10 @@ module Api
     end
 
     private
+
+      def record_not_found(e)
+        render json: { error: e.message }, status: :not_found
+      end
 
       def authenticate_request
         @current_user = AuthorizeApiRequest.call(request.headers).result

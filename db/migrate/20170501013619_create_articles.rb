@@ -6,7 +6,9 @@ class CreateArticles < ActiveRecord::Migration[5.1]
 
       t.integer :favorites_count, :comments_count, default: 0, null: false
       t.belongs_to :user, foreign_key: true, index: true
+      t.string :slug
       t.timestamps
     end
+    add_index :articles, :slug, unique: true
   end
 end

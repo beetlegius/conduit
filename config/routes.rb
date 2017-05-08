@@ -2,7 +2,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     defaults format: :json do
-      resource :user
+      resources :users do
+        get :current, on: :collection
+        resources :articles, only: %w(index)
+      end
       resources :articles do
         get :feed, on: :collection
       end

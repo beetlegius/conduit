@@ -1,11 +1,16 @@
-<form [formGroup]="articleForm" (ngSubmit)="save()" autocomplete="off">
-  <fieldset [disabled]="isSubmitting">
-    <fieldset class="form-group">
-      <input [autofocus] formControlName="title" placeholder="Title" class="form-control" type="text" />
+<div class="container-fluid">
+  <h1 class="display-4"><i class="fa fa-edit fa-fw"></i> {{title}}</h1>
+  <hr />
+  <p class="lead">{{description}}</p>
+  <form [formGroup]="articleForm" (ngSubmit)="save()" autocomplete="off" *ngIf="article">
+    <fieldset [disabled]="isSubmitting">
+      <fieldset class="form-group">
+        <input [autofocus] formControlName="title" placeholder="Title" class="form-control" type="text" [(ngModel)]="article.title" />
+      </fieldset>
+      <fieldset class="form-group">
+        <textarea rows="5" formControlName="content" placeholder="Content" class="form-control" [(ngModel)]="article.content"></textarea>
+      </fieldset>
+      <button class="btn btn-success" [disabled]="!articleForm.valid" type="submit">{{buttonLabel}}</button>
     </fieldset>
-    <fieldset class="form-group">
-      <textarea formControlName="content" placeholder="Content" class="form-control"></textarea>
-    </fieldset>
-    <button class="btn btn-success" [disabled]="!articleForm.valid" type="submit">Create article</button>
-  </fieldset>
-</form>
+  </form>
+</div>

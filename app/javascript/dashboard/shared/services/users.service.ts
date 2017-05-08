@@ -71,7 +71,7 @@ export class UsersService {
     this.isAuthenticatedSubject.next(false)
   }
 
-  find(slug: string) : Observable<User> {
+  find(slug: string) : Observable<any> {
     return this.api.get(this.users_url + slug)
   }
 

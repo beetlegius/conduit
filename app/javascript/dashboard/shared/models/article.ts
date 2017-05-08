@@ -3,7 +3,8 @@ import { Comment } from './comment'
 import { Tag } from './tag'
 
 export class Article {
-  id?: number
+  id: number
+  slug: string
   created_at: string
   updated_at: string
   title: string

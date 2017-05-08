@@ -12,11 +12,13 @@ export class ArticlesNewComponent extends ArticlesFormComponent {
 
   ngOnInit() {
     super.ngOnInit()
-    console.log('loading')
+    this.title = 'Add article'
+    this.description = 'Complete the fields please, and press Create Article.'
+    this.buttonLabel = 'Create article'
   }
 
   save(){
-    alert('save! puta madre')
+    this.service.create(this.article).subscribe( (data) => this.router.navigate(['/']))
   }
 
 }
