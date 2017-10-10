@@ -18,8 +18,8 @@ gustavo  = User.create! name: 'Gustavo',  email: 'info@beetlegius.com.ar',      
 josefina = User.create! name: 'Josefina', email: 'lapera5@hotmail.com',         password: password, bio: paragraph, image_url: 'https://cfl.dropboxstatic.com/static/images/jobs/jobs_2015/profile-home-makers-vflWnMtf7.jpg'
 eduardo  = User.create! name: 'Eduardo',  email: 'kairus@hotmail.com',          password: password, bio: paragraph, image_url: 'https://careers.guidewire.com/files/2914/5883/3737/profile_2016_dave_mount.jpg'
 mariana  = User.create! name: 'Mariana',  email: 'marisanchez@gmail.com',       password: password, bio: paragraph, image_url: 'https://cfl.dropboxstatic.com/static/images/jobs/jobs_2015/genevieve-vflQIXjKJ.png'
-sandra   = User.create! name: 'Sandra',   email: 'sandra@quilombo.com.ar',      password: password, bio: paragraph, image_url: 'https://nursing.vanderbilt.edu/images/directory/branam_leah-500.jpg'
-emanuel  = User.create! name: 'Emanuel',  email: 'emanuel@tranquilidad.com.br', password: password, bio: paragraph, image_url: 'https://nursing.vanderbilt.edu/images/directory/smith_randall-500.jpg'
+sandra   = User.create! name: 'Sandra',   email: 'sandra@sandro.com.ar',      password: password, bio: paragraph, image_url: 'https://nursing.vanderbilt.edu/images/directory/branam_leah-500.jpg'
+emanuel  = User.create! name: 'Emanuel',  email: 'emanuel@sandro.com.br', password: password, bio: paragraph, image_url: 'https://nursing.vanderbilt.edu/images/directory/smith_randall-500.jpg'
 
 
 # Create relationships
